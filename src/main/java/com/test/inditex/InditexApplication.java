@@ -3,7 +3,7 @@ package com.test.inditex;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.test.inditex"})
 public class InditexApplication {
 
 	public static void main(String[] args) {
