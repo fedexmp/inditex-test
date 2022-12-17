@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: clothes
+  version: '1.0'
+  description: Clothes api
+  contact: {}
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /clothes:
+    get:
+      summary: Get clothes filtered by stock and sales
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ClothesResponse'
+      operationId: get-clothes
+      description: Retrieve the clothes information filtered by stock and sales.
+components:
+  schemas:
+    ClothesResponse:
+      type: array
+      description: Clothes list
+      items:
+        $ref: '#/components/schemas/ClothesObject'
+      additionalProperties: false
+      title: Clothes list response
+    ClothesObject:
+      description: Operation successfully completed
+      title: ClothesObject
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for clothes.
+        name:
+          type: string
+          description: Name of clothes.
+        sales:
+          type: integer
+          description: Sales of clothes.
+        small:
+          type: integer
+          description: Clothing small size.
+        medium:
+          type: integer
+          description: Clothing medium size.
+        large:
+          type: integer
+          description: Clothing large size.
+      required:
+        - id
+        - name
+  responses:
+    ClothesResponse:
+      description: List of clothes.
+      content:
+        application/json:
+          schema:
+            $ref: '#components/schemas/ClothesResponse'
