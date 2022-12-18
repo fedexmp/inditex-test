@@ -7,10 +7,4 @@ Only have one endpoint, this endpoint has the functionality of filter informatio
 
 Tests implemented with Mockito and Junit 5.
 
-
-
-Curl example for test on local deploy: 
-
-curl -X 'GET' \
-  'http://localhost:8080/clothes' \
-  -H 'accept: application/json'
+Postman collection on resources directory
