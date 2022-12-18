@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "5b537eea-104f-4497-9708-8b31d158f863",
+		"name": "Clothes collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new clothes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\": \"Random T-Shirt\",\r\n        \"sales\": 150,\r\n        \"small\": 30,\r\n        \"medium\": 50,\r\n        \"large\": 15\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clothes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clothes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update clothes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test T-Shirt\",\r\n    \"sales\": 150,\r\n    \"small\": 30,\r\n    \"medium\": 50,\r\n    \"large\": 15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clothes/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clothes",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete clothes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/clothes/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clothes",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get filtered clothes by sales and size stock",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clothes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clothes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
