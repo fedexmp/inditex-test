@@ -1,6 +1,6 @@
 package com.test.inditex.controller;
 
-import com.test.inditex.openapi.model.ClothesObject;
+import com.test.inditex.openapi.model.ClothesObjectResponse;
 import com.test.inditex.service.ClothesService;
 import com.test.inditex.utils.UtilsTestMethods;
 import org.junit.jupiter.api.Assertions;
@@ -27,11 +27,11 @@ public class ClothesControllerTest {
 
     @Test
     public void getClothesTest() {
-        List<ClothesObject> dtoList = UtilsTestMethods.getClothesObjectList();
+        List<ClothesObjectResponse> dtoList = UtilsTestMethods.getClothesObjectList();
 
         Mockito.when(service.getFilteredClothes()).thenReturn(dtoList);
 
-        ResponseEntity<List<ClothesObject>> result = controller.getClothes();
+        ResponseEntity<List<ClothesObjectResponse>> result = controller.getClothes();
 
         Assertions.assertNotNull(result);
         Assertions.assertEquals(result.getBody(), dtoList);

@@ -1,7 +1,7 @@
 package com.test.inditex.utils;
 
 import com.test.inditex.model.entity.Clothes;
-import com.test.inditex.openapi.model.ClothesObject;
+import com.test.inditex.openapi.model.ClothesObjectResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.List;
 public class UtilsTestMethods {
 
     /**
-     * Get {@link List<ClothesObject>} object with correct structure
+     * Get {@link List<ClothesObjectResponse>} object with correct structure
      */
-    public static List<ClothesObject> getClothesObjectList(){
-        List<ClothesObject> list = new ArrayList<>();
-        ClothesObject clothesObject = new ClothesObject();
+    public static List<ClothesObjectResponse> getClothesObjectList(){
+        List<ClothesObjectResponse> list = new ArrayList<>();
+        ClothesObjectResponse clothesObject = new ClothesObjectResponse();
         clothesObject.setId(1);
         clothesObject.setName("Test T-Shirt");
         clothesObject.setSales(50);

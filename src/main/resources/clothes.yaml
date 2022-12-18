@@ -20,18 +20,84 @@ paths:
                 $ref: '#/components/responses/ClothesResponse'
       operationId: get-clothes
       description: Retrieve the clothes information filtered by stock and sales.
+    post:
+      summary: Create new clothes
+      tags: []
+      requestBody:
+        $ref: '#/components/requestBodies/ClothesRequest'
+      responses:
+        '201':
+          description: Request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Created'
+      operationId: post-clothes
+      description: Create new clothes on database
+  /clothes/{id}:
+    put:
+      summary: Update clothes
+      tags: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifier of clothes
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClothesObjectRequest' 
+      responses:
+        '200':
+          description: Request updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClothesObjectResponse'
+      operationId: put-clothes
+      description: Update clothes on database
+    delete:
+      summary: Delete clothes
+      tags: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifier of clothes
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses: 
+        '200':
+          description: OK
+      operationId: delete-clothes
+      description: Delete clothes on database  
 components:
   schemas:
     ClothesResponse:
       type: array
       description: Clothes list
       items:
-        $ref: '#/components/schemas/ClothesObject'
+        $ref: '#/components/schemas/ClothesObjectResponse'
       additionalProperties: false
       title: Clothes list response
-    ClothesObject:
+    ClothesRequest:
+      type: array
+      description: Clothes list request
+      items:
+        $ref: '#/components/schemas/ClothesObjectRequest'
+      additionalProperties: false
+      title: Clothes list request
+    ClothesObjectResponse:
       description: Operation successfully completed
-      title: ClothesObject
+      title: ClothesObjectResponse
       type: object
       properties:
         id:
@@ -55,6 +121,41 @@ components:
       required:
         - id
         - name
+    ClothesObjectRequest:
+      description: Operation successfully completed
+      title: ClothesObject
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of clothes.
+        sales:
+          type: integer
+          description: Sales of clothes.
+        small:
+          type: integer
+          description: Clothing small size.
+        medium:
+          type: integer
+          description: Clothing medium size.
+        large:
+          type: integer
+          description: Clothing large size.
+      required:
+        - name
+        - sales
+        - small
+        - medium
+        - large
+    Created:
+      description: Created successfully 
+      title: Created
+      type: object
+      properties:
+        message:
+          type: string
+          description: Request received and created
+      additionalProperties: false
   responses:
     ClothesResponse:
       description: List of clothes.
@@ -62,3 +163,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ClothesResponse'
+    Created:
+      description: Request created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Created'
+  requestBodies:
+    ClothesRequest:
+      description: List of clothes.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClothesRequest'
