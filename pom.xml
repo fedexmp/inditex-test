@@ -61,9 +61,14 @@
 			<version>0.2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.13</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -159,7 +164,7 @@
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>5.1.0</version>
+				<version>6.2.0</version>
 				<executions>
 					<execution>
 						<goals>
@@ -170,12 +175,17 @@
 								${project.basedir}/src/main/resources/clothes.yaml
 							</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>com.test.inditex.openapi.controller</apiPackage>
-							<modelPackage>com.test.inditex.openapi.model</modelPackage>
 							<supportingFilesToGenerate>
-								ApiUtil.java
+								ApiUtil.java,SpringDocConfiguration.java,HomeController.java
 							</supportingFilesToGenerate>
 							<configOptions>
+								<basePackage>com.test.inditex.openapi</basePackage>
+								<apiPackage>com.test.inditex.openapi.controller</apiPackage>
+								<modelPackage>com.test.inditex.openapi.model</modelPackage>
+								<configPackage>com.test.inditex.openapi.configuration</configPackage>
+								<library>spring-boot</library>
+								<serializableModel>true</serializableModel>
+								<returnSuccessCode>true</returnSuccessCode>
 								<delegatePattern>true</delegatePattern>
 							</configOptions>
 						</configuration>
