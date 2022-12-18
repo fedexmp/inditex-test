@@ -61,4 +61,4 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#components/schemas/ClothesResponse'
+            $ref: '#/components/schemas/ClothesResponse'
